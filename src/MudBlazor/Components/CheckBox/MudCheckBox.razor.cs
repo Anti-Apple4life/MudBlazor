@@ -65,6 +65,13 @@ namespace MudBlazor
         [Parameter]
         [Category(CategoryTypes.FormComponent.Appearance)]
         public bool Dense { get; set; }
+        
+        /// <summary>
+        /// If true, keyboard controls will be disabled.
+        /// </summary>
+        [Parameter]
+        [Category(CategoryTypes.FormComponent.Behavior)]
+        public bool DisableKeyboardControls { get; set; }
 
         /// <summary>
         /// The Size of the component.
@@ -148,7 +155,7 @@ namespace MudBlazor
 
         protected void HandleKeyDown(KeyboardEventArgs obj)
         {
-            if (Disabled || ReadOnly)
+            if (Disabled || ReadOnly || DisableKeyboardControls)
                 return;
             switch (obj.Key)
             {
